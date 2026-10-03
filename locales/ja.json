@@ -1,0 +1,39 @@
+{
+  "name": "画像描画＆バーコード (Graphics & Barcode)",
+  "description": "キャンバス作成、図形・文字描画、スタンプ合成、ウォーターマーク、モザイク処理を提供します",
+  "group": "グラフィックス・描画",
+  "actions": {
+    "CreateCanvas": {
+      "display_name": "新規キャンバス作成",
+      "description": "指定サイズと背景色を持つ新規キャンバスまたは透明画像を生成します"
+    },
+    "DrawRect": {
+      "display_name": "矩形枠を描画",
+      "description": "画像上に枠線の太さ、色、塗りつぶし、ラベルを設定して四角形を描画します"
+    },
+    "DrawShape": {
+      "display_name": "幾何学図形を描画",
+      "description": "円、直線、矢印、多角形などの図形を画像上に描画します"
+    },
+    "DrawText": {
+      "display_name": "テキスト描画",
+      "description": "フォント、サイズ、色、影効果を指定して画像上に文字を描画します"
+    },
+    "DrawImage": {
+      "display_name": "画像・スタンプ合成",
+      "description": "ロゴやスタンプ画像を透明度やブレンドモードを指定して背景画像に重ね合わせます"
+    },
+    "DrawWatermark": {
+      "display_name": "タイリング透かし（ウォーターマーク）",
+      "description": "画像全体に斜めの防止用透かし文字を並べて盗用を防止します"
+    },
+    "FillColor": {
+      "display_name": "領域塗りつぶし＆モザイク処理",
+      "description": "機密情報領域にモザイクをかけたり、単色で塗りつぶして情報漏洩を防止します"
+    },
+    "BarcodeCreate": {
+      "display_name": "バーコード・QRコード作成",
+      "description": "高解像度のバーコードやカラーQRコード画像を生成します"
+    }
+  }
+}

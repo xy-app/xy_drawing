@@ -1,0 +1,39 @@
+{
+  "name": "圖片繪製與條碼 (Graphics & Barcode)",
+  "description": "提供畫布建立、繪製矩形與文字、圖章疊加、全圖浮水印以及打碼脫敏等圖片編輯處理功能",
+  "group": "影像繪製",
+  "actions": {
+    "CreateCanvas": {
+      "display_name": "建立空白畫布 (CreateCanvas)",
+      "description": "建立一張指定尺寸與背景顏色的空白圖片或透明底圖"
+    },
+    "DrawRect": {
+      "display_name": "繪製矩形框 (DrawRect)",
+      "description": "在圖片上畫矩形框，可設定邊框粗細、顏色、填滿底色或新增文字標籤"
+    },
+    "DrawShape": {
+      "display_name": "繪製幾何圖形 (DrawShape)",
+      "description": "在圖片上繪製圓形、直線、箭頭等多邊形圖形"
+    },
+    "DrawText": {
+      "display_name": "繪製文字 (DrawText)",
+      "description": "在圖片指定位置寫入文字內容，支援自訂字型、大小、顏色與陰影效果"
+    },
+    "DrawImage": {
+      "display_name": "疊加貼圖與印章 (DrawImage)",
+      "description": "將小圖或印章疊加合併到底圖上，支援設定透明度與混合模式"
+    },
+    "DrawWatermark": {
+      "display_name": "全圖平鋪浮水印 (DrawWatermark)",
+      "description": "在全圖均勻平鋪傾斜防偽浮水印文字，有效防止截圖盜用"
+    },
+    "FillColor": {
+      "display_name": "區域填滿與打碼脫敏 (FillColor)",
+      "description": "對敏感資訊區域進行馬賽克打碼模糊，或用純色塊快速塗抹覆蓋"
+    },
+    "BarcodeCreate": {
+      "display_name": "生成條碼與二維碼 (BarcodeCreate)",
+      "description": "生成指定格式的高畫質條碼或彩色二維碼圖片"
+    }
+  }
+}

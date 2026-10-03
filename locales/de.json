@@ -1,0 +1,39 @@
+{
+  "name": "Grafikzeichnung & Barcode (Graphics & Barcode)",
+  "description": "Bietet Leinwanderstellung, Formen- und Textzeichnung, Bildüberlagerung, Wasserzeichen und Verpixelung",
+  "group": "Zeichnen & Grafik",
+  "actions": {
+    "CreateCanvas": {
+      "display_name": "Leere Leinwand erstellen",
+      "description": "Erstellt eine neue leere Leinwand mit bestimmten Maßen und Hintergrundfarbe"
+    },
+    "DrawRect": {
+      "display_name": "Rechteck zeichnen",
+      "description": "Zeichnet Rechtecke auf Bilder mit anpassbarer Randstärke und Füllfarbe"
+    },
+    "DrawShape": {
+      "display_name": "Geometrische Form zeichnen",
+      "description": "Zeichnet Kreise, Linien, Pfeile oder Polygone auf Bilder"
+    },
+    "DrawText": {
+      "display_name": "Text auf Bild zeichnen",
+      "description": "Schreibt Text auf Bilder mit Schriftart, Größe, Farbe und Schatteneffekt"
+    },
+    "DrawImage": {
+      "display_name": "Bild & Stempel überlagern",
+      "description": "Überlagert Bilder oder Stempel mit Transparenzregelung auf das Hintergrundbild"
+    },
+    "DrawWatermark": {
+      "display_name": "Gekacheltes Wasserzeichen",
+      "description": "Fügt ein wiederholtes Wasserzeichen über das gesamte Bild ein"
+    },
+    "FillColor": {
+      "display_name": "Bereichsfüllung & Mosaik-Zensur",
+      "description": "Sensible Bereiche verpixeln oder mit Volltonfarbe überdecken"
+    },
+    "BarcodeCreate": {
+      "display_name": "Barcode & QR-Code erstellen",
+      "description": "Generiert hochauflösende Barcodes oder farbige QR-Code-Grafiken"
+    }
+  }
+}

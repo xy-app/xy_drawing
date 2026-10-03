@@ -1,0 +1,914 @@
+{
+  "plugin_id": "xy_drawing",
+  "name": "图片绘制与条形码 (Graphics & Barcode)",
+  "version": "0.51.0",
+  "group": "Draw",
+  "group_icon": "🎨",
+  "order": 60,
+  "description": "提供在图片上画框标注、绘制箭头线条、添加文字、叠加印章、平铺防泄密水印、敏感信息打马赛克，以及生成条形码和二维码等功能",
+  "actions": [
+    {
+      "tag": "CreateCanvas",
+      "display_name": "创建空白画布 (CreateCanvas)",
+      "icon": "🎨",
+      "platforms": "All",
+      "description": "创建一张指定尺寸与背景色的空白图片或透明底图",
+      "keywords": [
+        "drawing",
+        "canvas",
+        "create_canvas",
+        "blank_image",
+        "new_image",
+        "画布",
+        "创建画布",
+        "新建图像",
+        "透明背景"
+      ],
+      "fields": [
+        {
+          "name": "width",
+          "display_name": "画布宽度 (px)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "800",
+          "presets": [
+            "800",
+            "1280",
+            "1920"
+          ],
+          "description": "画布宽度（像素）"
+        },
+        {
+          "name": "height",
+          "display_name": "画布高度 (px)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "600",
+          "presets": [
+            "600",
+            "720",
+            "1080"
+          ],
+          "description": "画布高度（像素）"
+        },
+        {
+          "name": "background_color",
+          "display_name": "背景颜色",
+          "intrinsic_type": "Color",
+          "default_type": "string",
+          "default_value": "transparent",
+          "presets": [
+            "transparent",
+            "white",
+            "black",
+            "#F3F4F6"
+          ],
+          "description": "背景颜色（HEX、RGBA或CSS名称）"
+        },
+        {
+          "name": "output_path",
+          "display_name": "保存路径 (可选)",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "输出图像保存文件路径"
+        }
+      ],
+      "output_type": "image"
+    },
+    {
+      "tag": "DrawRect",
+      "display_name": "绘制矩形框 (DrawRect)",
+      "icon": "⬛",
+      "platforms": "All",
+      "description": "在图片上画矩形框，可设置边框粗细、颜色、填充底色或添加文字标签",
+      "keywords": [
+        "drawing",
+        "rect",
+        "draw_rect",
+        "box",
+        "bounding_box",
+        "yolo_box",
+        "画矩形",
+        "画框",
+        "检测框",
+        "标注框"
+      ],
+      "fields": [
+        {
+          "name": "image",
+          "display_name": "目标底图",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "底图变量或文件路径"
+        },
+        {
+          "name": "rect",
+          "display_name": "矩形区域 (x, y, w, h)",
+          "intrinsic_type": "String",
+          "default_type": "string",
+          "default_value": "0, 0, 100, 100",
+          "presets": [
+            "0, 0, 100, 100",
+            "100, 100, 200, 150"
+          ],
+          "description": "矩形位置与尺寸"
+        },
+        {
+          "name": "border_color",
+          "display_name": "边框颜色",
+          "intrinsic_type": "Color",
+          "default_type": "string",
+          "default_value": "red",
+          "presets": [
+            "red",
+            "green",
+            "blue",
+            "yellow",
+            "#00FF00"
+          ],
+          "description": "边框线条颜色"
+        },
+        {
+          "name": "border_thickness",
+          "display_name": "边框粗细 (px)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "2",
+          "presets": [
+            "1",
+            "2",
+            "3",
+            "5"
+          ],
+          "description": "边框线条粗细"
+        },
+        {
+          "name": "fill_color",
+          "display_name": "填充颜色 (可选)",
+          "intrinsic_type": "Color",
+          "default_type": "string",
+          "default_value": "transparent",
+          "presets": [
+            "transparent",
+            "rgba(255, 0, 0, 0.2)",
+            "#FFFFFF80"
+          ],
+          "description": "矩形填充底色"
+        },
+        {
+          "name": "label",
+          "display_name": "标注文字 (可选)",
+          "intrinsic_type": "String",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "顶部标签文字（如 person: 0.95）"
+        },
+        {
+          "name": "output_path",
+          "display_name": "输出路径 (可选)",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "输出图像保存路径"
+        }
+      ],
+      "output_type": "image"
+    },
+    {
+      "tag": "DrawShape",
+      "display_name": "绘制几何图形 (DrawShape)",
+      "icon": "🔷",
+      "platforms": "All",
+      "description": "在图片上绘制线条、指示箭头、圆形或多边形",
+      "keywords": [
+        "drawing",
+        "shape",
+        "draw_shape",
+        "line",
+        "arrow",
+        "circle",
+        "ellipse",
+        "polygon",
+        "几何图形",
+        "画线",
+        "画圆",
+        "画箭头",
+        "画多边形"
+      ],
+      "fields": [
+        {
+          "name": "image",
+          "display_name": "目标底图",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "底图变量或文件路径"
+        },
+        {
+          "name": "shape_type",
+          "display_name": "形状类型",
+          "intrinsic_type": "Dropdown",
+          "default_type": "string",
+          "default_value": "line",
+          "presets": [
+            "line",
+            "arrow",
+            "circle",
+            "ellipse",
+            "polygon"
+          ],
+          "description": "几何形状类型"
+        },
+        {
+          "name": "points",
+          "display_name": "坐标参数",
+          "intrinsic_type": "String",
+          "default_type": "string",
+          "default_value": "10, 10, 100, 100",
+          "presets": [
+            "10, 10, 200, 150",
+            "100, 100, 50",
+            "100, 100, 60, 40",
+            "50,50; 150,50; 100,120"
+          ],
+          "description": "几何坐标定义"
+        },
+        {
+          "name": "color",
+          "display_name": "线条颜色",
+          "intrinsic_type": "Color",
+          "default_type": "string",
+          "default_value": "red",
+          "presets": [
+            "red",
+            "blue",
+            "green",
+            "yellow",
+            "#3B82F6"
+          ],
+          "description": "线条或轮廓颜色"
+        },
+        {
+          "name": "thickness",
+          "display_name": "线条粗细 (px)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "2",
+          "presets": [
+            "1",
+            "2",
+            "3",
+            "5"
+          ],
+          "description": "线条像素粗细"
+        },
+        {
+          "name": "fill_color",
+          "display_name": "填充颜色 (可选)",
+          "intrinsic_type": "Color",
+          "default_type": "string",
+          "default_value": "transparent",
+          "presets": [
+            "transparent",
+            "rgba(0, 128, 255, 0.3)",
+            "#FFFF0080"
+          ],
+          "description": "闭合图形内部填充色"
+        },
+        {
+          "name": "output_path",
+          "display_name": "输出路径 (可选)",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "输出图像保存路径"
+        }
+      ],
+      "output_type": "image"
+    },
+    {
+      "tag": "DrawText",
+      "display_name": "绘制文字 (DrawText)",
+      "icon": "✍️",
+      "platforms": "All",
+      "description": "在图片的指定位置添加单行或多行文字，支持设置文字大小、颜色与背景底色",
+      "keywords": [
+        "drawing",
+        "text",
+        "draw_text",
+        "font",
+        "typography",
+        "label",
+        "画文字",
+        "写字",
+        "添加文本",
+        "字体渲染",
+        "文字标注"
+      ],
+      "fields": [
+        {
+          "name": "image",
+          "display_name": "目标底图",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "底图变量或文件路径"
+        },
+        {
+          "name": "text",
+          "display_name": "文本内容",
+          "intrinsic_type": "String",
+          "default_type": "string",
+          "default_value": "Hello XY",
+          "presets": [],
+          "description": "绘制文本内容（支持换行）"
+        },
+        {
+          "name": "x",
+          "display_name": "X 坐标 (px)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "10",
+          "presets": [
+            "10",
+            "50",
+            "100"
+          ],
+          "description": "文字起始 X 坐标"
+        },
+        {
+          "name": "y",
+          "display_name": "Y 坐标 (px)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "10",
+          "presets": [
+            "10",
+            "50",
+            "100"
+          ],
+          "description": "文字起始 Y 坐标"
+        },
+        {
+          "name": "font_size",
+          "display_name": "字号大小 (px)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "16",
+          "presets": [
+            "12",
+            "16",
+            "20",
+            "24",
+            "32",
+            "48"
+          ],
+          "description": "文字字号大小"
+        },
+        {
+          "name": "font_color",
+          "display_name": "文字颜色",
+          "intrinsic_type": "Color",
+          "default_type": "string",
+          "default_value": "black",
+          "presets": [
+            "black",
+            "white",
+            "red",
+            "#1F2937"
+          ],
+          "description": "文字前景色"
+        },
+        {
+          "name": "font_path",
+          "display_name": "字体路径 (可选)",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "自定义字体路径"
+        },
+        {
+          "name": "background_color",
+          "display_name": "底色色块 (可选)",
+          "intrinsic_type": "Color",
+          "default_type": "string",
+          "default_value": "transparent",
+          "presets": [
+            "transparent",
+            "rgba(0, 0, 0, 0.5)",
+            "#FFFFFFE0"
+          ],
+          "description": "文字背景矩形色块"
+        },
+        {
+          "name": "stroke_color",
+          "display_name": "描边颜色 (可选)",
+          "intrinsic_type": "Color",
+          "default_type": "string",
+          "default_value": "transparent",
+          "presets": [
+            "transparent",
+            "white",
+            "black"
+          ],
+          "description": "文字轮廓描边颜色"
+        },
+        {
+          "name": "output_path",
+          "display_name": "输出路径 (可选)",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "输出图像保存路径"
+        }
+      ],
+      "output_type": "image"
+    },
+    {
+      "tag": "DrawImage",
+      "display_name": "叠加贴图与印章 (DrawImage)",
+      "icon": "🖼️",
+      "platforms": "All",
+      "description": "在图片上叠加盖章、插入图标或添加水印图片，支持调整透明度和缩放大小",
+      "keywords": [
+        "drawing",
+        "image",
+        "draw_image",
+        "overlay",
+        "stamp",
+        "watermark_image",
+        "logo",
+        "叠加图像",
+        "贴图",
+        "盖章",
+        "印章",
+        "图像合并"
+      ],
+      "fields": [
+        {
+          "name": "image",
+          "display_name": "目标底图",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "底图变量或文件路径"
+        },
+        {
+          "name": "overlay",
+          "display_name": "叠加贴图/印章",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "待叠加的前景贴图"
+        },
+        {
+          "name": "x",
+          "display_name": "X 偏移 (px)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "0",
+          "presets": [
+            "0",
+            "10",
+            "50"
+          ],
+          "description": "水平偏移量"
+        },
+        {
+          "name": "y",
+          "display_name": "Y 偏移 (px)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "0",
+          "presets": [
+            "0",
+            "10",
+            "50"
+          ],
+          "description": "垂直偏移量"
+        },
+        {
+          "name": "anchor",
+          "display_name": "九宫格对齐基准",
+          "intrinsic_type": "Dropdown",
+          "default_type": "string",
+          "default_value": "TopLeft",
+          "presets": [
+            "TopLeft",
+            "TopCenter",
+            "TopRight",
+            "CenterLeft",
+            "Center",
+            "CenterRight",
+            "BottomLeft",
+            "BottomCenter",
+            "BottomRight"
+          ],
+          "description": "九宫格基准点"
+        },
+        {
+          "name": "opacity",
+          "display_name": "透明度 (0.0~1.0)",
+          "intrinsic_type": "Real",
+          "default_type": "real",
+          "default_value": "1.0",
+          "presets": [
+            "1.0",
+            "0.8",
+            "0.5",
+            "0.3"
+          ],
+          "description": "叠加不透明度"
+        },
+        {
+          "name": "scale",
+          "display_name": "缩放比例 (或 宽,高)",
+          "intrinsic_type": "String",
+          "default_type": "string",
+          "default_value": "1.0",
+          "presets": [
+            "1.0",
+            "0.5",
+            "1.5",
+            "2.0",
+            "100,100"
+          ],
+          "description": "缩放系数或指定分辨率"
+        },
+        {
+          "name": "output_path",
+          "display_name": "输出路径 (可选)",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "输出图像保存路径"
+        }
+      ],
+      "output_type": "image"
+    },
+    {
+      "tag": "DrawWatermark",
+      "display_name": "全图平铺水印 (DrawWatermark)",
+      "icon": "💧",
+      "platforms": "All",
+      "description": "在整张图片上倾斜平铺半透明防泄密文字水印",
+      "keywords": [
+        "drawing",
+        "watermark",
+        "draw_watermark",
+        "security",
+        "tiled_watermark",
+        "水印",
+        "防泄密",
+        "全图水印",
+        "倾斜水印",
+        "安全防伪"
+      ],
+      "fields": [
+        {
+          "name": "image",
+          "display_name": "目标底图",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "底图变量或文件路径"
+        },
+        {
+          "name": "text",
+          "display_name": "水印文本内容",
+          "intrinsic_type": "String",
+          "default_type": "string",
+          "default_value": "内部机密 · 请勿外传",
+          "presets": [
+            "内部机密 · 请勿外传",
+            "仅供业务审核使用",
+            "CONFIDENTIAL"
+          ],
+          "description": "水印文字内容"
+        },
+        {
+          "name": "font_size",
+          "display_name": "水印字号 (px)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "20",
+          "presets": [
+            "16",
+            "20",
+            "24",
+            "32"
+          ],
+          "description": "水印文本字号"
+        },
+        {
+          "name": "color",
+          "display_name": "水印颜色 (含透明度)",
+          "intrinsic_type": "Color",
+          "default_type": "string",
+          "default_value": "rgba(128, 128, 128, 0.25)",
+          "presets": [
+            "rgba(128, 128, 128, 0.25)",
+            "rgba(0, 0, 0, 0.15)",
+            "rgba(255, 0, 0, 0.2)",
+            "#88888840"
+          ],
+          "description": "半透明水印颜色"
+        },
+        {
+          "name": "angle",
+          "display_name": "倾斜角度 (°)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "-30",
+          "presets": [
+            "-30",
+            "-45",
+            "-15",
+            "0"
+          ],
+          "description": "水印倾斜角度"
+        },
+        {
+          "name": "spacing_x",
+          "display_name": "水平平铺间距 (px)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "240",
+          "presets": [
+            "200",
+            "240",
+            "300"
+          ],
+          "description": "水印平铺水平间距"
+        },
+        {
+          "name": "spacing_y",
+          "display_name": "垂直平铺间距 (px)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "160",
+          "presets": [
+            "120",
+            "160",
+            "200"
+          ],
+          "description": "水印平铺垂直间距"
+        },
+        {
+          "name": "font_path",
+          "display_name": "字体路径 (可选)",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "自定义字体路径"
+        },
+        {
+          "name": "output_path",
+          "display_name": "输出路径 (可选)",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "输出图像保存路径"
+        }
+      ],
+      "output_type": "image"
+    },
+    {
+      "tag": "FillColor",
+      "display_name": "区域填充与打码脱敏 (FillColor)",
+      "icon": "🪣",
+      "platforms": "All",
+      "description": "对图片的指定区域涂色遮盖、打马赛克或模糊处理，保护敏感隐私信息",
+      "keywords": [
+        "drawing",
+        "fill",
+        "fill_color",
+        "mosaic",
+        "blur",
+        "redaction",
+        "desensitization",
+        "填充颜色",
+        "遮罩",
+        "马赛克",
+        "打码",
+        "模糊",
+        "隐私脱敏"
+      ],
+      "fields": [
+        {
+          "name": "image",
+          "display_name": "目标底图",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "底图变量或文件路径"
+        },
+        {
+          "name": "rect",
+          "display_name": "填充区域 (x, y, w, h)",
+          "intrinsic_type": "String",
+          "default_type": "string",
+          "default_value": "0, 0, 100, 100",
+          "presets": [
+            "0, 0, 100, 100",
+            "50, 50, 200, 60"
+          ],
+          "description": "目标矩形区域"
+        },
+        {
+          "name": "mode",
+          "display_name": "填充模式",
+          "intrinsic_type": "Dropdown",
+          "default_type": "string",
+          "default_value": "solid",
+          "presets": [
+            "solid",
+            "mosaic",
+            "blur"
+          ],
+          "description": "脱敏模式"
+        },
+        {
+          "name": "color",
+          "display_name": "遮罩颜色 (纯色模式)",
+          "intrinsic_type": "Color",
+          "default_type": "string",
+          "default_value": "black",
+          "presets": [
+            "black",
+            "white",
+            "#1F2937",
+            "#FFFFFF"
+          ],
+          "description": "纯色遮罩颜色"
+        },
+        {
+          "name": "block_size",
+          "display_name": "打码/模糊尺寸 (px)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "10",
+          "presets": [
+            "6",
+            "10",
+            "15",
+            "20"
+          ],
+          "description": "马赛克或模糊块大小"
+        },
+        {
+          "name": "output_path",
+          "display_name": "输出路径 (可选)",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "输出图像保存路径"
+        }
+      ],
+      "output_type": "image"
+    },
+    {
+      "tag": "BarcodeCreate",
+      "display_name": "生成条形码与二维码 (BarcodeCreate)",
+      "icon": "🏷️",
+      "platforms": "All",
+      "description": "一键生成标准二维码或一维条形码，支持自定义颜色与底部数字文字",
+      "keywords": [
+        "drawing",
+        "barcode",
+        "qrcode",
+        "barcode_create",
+        "code128",
+        "ean13",
+        "code39",
+        "二维码",
+        "条形码",
+        "一维码",
+        "条码生成",
+        "商品条码"
+      ],
+      "fields": [
+        {
+          "name": "barcode_type",
+          "display_name": "码制类型",
+          "intrinsic_type": "Dropdown",
+          "default_type": "string",
+          "default_value": "QRCode",
+          "presets": [
+            "QRCode",
+            "Code128",
+            "EAN13",
+            "Code39"
+          ],
+          "description": "码制类型"
+        },
+        {
+          "name": "content",
+          "display_name": "编码内容",
+          "intrinsic_type": "String",
+          "default_type": "string",
+          "default_value": "https://example.com",
+          "presets": [
+            "https://example.com",
+            "SF1234567890",
+            "690123456789"
+          ],
+          "description": "待编码文本或数字"
+        },
+        {
+          "name": "width",
+          "display_name": "图像宽度 (px)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "200",
+          "presets": [
+            "200",
+            "250",
+            "300"
+          ],
+          "description": "输出图像宽度"
+        },
+        {
+          "name": "height",
+          "display_name": "图像高度 (px)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "200",
+          "presets": [
+            "80",
+            "100",
+            "200"
+          ],
+          "description": "输出图像高度"
+        },
+        {
+          "name": "fg_color",
+          "display_name": "条码前景色",
+          "intrinsic_type": "Color",
+          "default_type": "string",
+          "default_value": "black",
+          "presets": [
+            "black",
+            "#1E40AF",
+            "#111827"
+          ],
+          "description": "条码与文字颜色"
+        },
+        {
+          "name": "bg_color",
+          "display_name": "背景颜色",
+          "intrinsic_type": "Color",
+          "default_type": "string",
+          "default_value": "white",
+          "presets": [
+            "white",
+            "transparent",
+            "#F9FAFB"
+          ],
+          "description": "条码背景颜色"
+        },
+        {
+          "name": "include_text",
+          "display_name": "附带明文标签 (一维码)",
+          "intrinsic_type": "Number",
+          "default_type": "number",
+          "default_value": "1",
+          "presets": [
+            "1",
+            "0"
+          ],
+          "description": "是否渲染下方明文文本"
+        },
+        {
+          "name": "output_path",
+          "display_name": "输出路径 (可选)",
+          "intrinsic_type": "FilePicker",
+          "default_type": "string",
+          "default_value": "",
+          "presets": [],
+          "description": "输出图像保存路径"
+        }
+      ],
+      "output_type": "image"
+    }
+  ]
+}

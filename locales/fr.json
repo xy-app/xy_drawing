@@ -1,0 +1,39 @@
+{
+  "name": "Dessin graphique & Code-barres (Graphics & Barcode)",
+  "description": "Fournit la création de canevas, le dessin de formes, l'ajout de texte, filigrane et floutage",
+  "group": "Dessin & Graphisme",
+  "actions": {
+    "CreateCanvas": {
+      "display_name": "Créer un canevas vierge",
+      "description": "Crée une nouvelle image avec dimensions et couleur de fond personnalisées"
+    },
+    "DrawRect": {
+      "display_name": "Dessiner un rectangle",
+      "description": "Dessine un rectangle sur l'image avec bordure et couleur de remplissage"
+    },
+    "DrawShape": {
+      "display_name": "Dessiner une forme géométrique",
+      "description": "Dessine des cercles, lignes, flèches ou polygones sur l'image"
+    },
+    "DrawText": {
+      "display_name": "Dessiner du texte sur l'image",
+      "description": "Rend du texte sur l'image avec police, taille et couleur au choix"
+    },
+    "DrawImage": {
+      "display_name": "Superposer une image ou un tampon",
+      "description": "Superpose des logos ou images avec contrôle de transparence"
+    },
+    "DrawWatermark": {
+      "display_name": "Filigrane en mosaïque",
+      "description": "Applique un filigrane répété sur toute l'image contre le vol"
+    },
+    "FillColor": {
+      "display_name": "Remplissage & Masquage mosaïque",
+      "description": "Masque les zones sensibles avec une mosaïque ou une couleur unie"
+    },
+    "BarcodeCreate": {
+      "display_name": "Créer un code-barres & QR code",
+      "description": "Génère des codes-barres haute résolution ou des codes QR personnalisés"
+    }
+  }
+}

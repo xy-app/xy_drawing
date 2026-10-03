@@ -1,0 +1,39 @@
+{
+  "name": "이미지 그리기 및 바코드 (Graphics & Barcode)",
+  "description": "캔버스 생성, 도형 및 텍스트 그리기, 이미지 오버레이, 워터마크, 모자이크 처리 기능을 제공합니다",
+  "group": "그래픽 및 드로잉",
+  "actions": {
+    "CreateCanvas": {
+      "display_name": "빈 캔버스 생성",
+      "description": "지정된 크기와 배경색을 가진 빈 이미지나 투명 캔버스를 생성합니다"
+    },
+    "DrawRect": {
+      "display_name": "직사각형 그리기",
+      "description": "선 두께, 색상, 채우기 색상 및 텍스트 레이블을 설정하여 직사각형을 그립니다"
+    },
+    "DrawShape": {
+      "display_name": "기하학적 도형 그리기",
+      "description": "원, 직선, 화살표, 다각형 등의 기하학적 도형을 그립니다"
+    },
+    "DrawText": {
+      "display_name": "이미지에 텍스트 그리기",
+      "description": "글꼴, 크기, 색상 및 그림자 효과를 지정하여 텍스트를 작성합니다"
+    },
+    "DrawImage": {
+      "display_name": "이미지 및 스탬프 합성",
+      "description": "투명도 및 합성 모드를 설정하여 로고나 스탬프를 배경 이미지에 오버레이합니다"
+    },
+    "DrawWatermark": {
+      "display_name": "바둑판식 워터마크 삽입",
+      "description": "도용 방지를 위해 이미지 전체에 기울어진 워터마크 텍스트를 바둑판식으로 배치합니다"
+    },
+    "FillColor": {
+      "display_name": "영역 채우기 및 모자이크 비식별화",
+      "description": "민감 정보 영역에 모자이크 블러 처리를 하거나 단색으로 가립니다"
+    },
+    "BarcodeCreate": {
+      "display_name": "바코드 및 QR 코드 생성",
+      "description": "고해상도 바코드 또는 컬러 QR 코드 이미지를 생성합니다"
+    }
+  }
+}

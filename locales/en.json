@@ -1,0 +1,39 @@
+{
+  "name": "Graphics Drawing & Barcode (Graphics & Barcode)",
+  "description": "Provides canvas creation, shape and text drawing, image overlay, watermarking, and mosaic redaction",
+  "group": "Drawing & Graphics",
+  "actions": {
+    "CreateCanvas": {
+      "display_name": "Create Blank Canvas",
+      "description": "Create a new blank canvas image with custom dimensions and background color"
+    },
+    "DrawRect": {
+      "display_name": "Draw Rectangle",
+      "description": "Draw rectangles on an image with customizable stroke width, fill color, and labels"
+    },
+    "DrawShape": {
+      "display_name": "Draw Geometric Shape",
+      "description": "Draw circles, lines, arrows, or polygons on an image"
+    },
+    "DrawText": {
+      "display_name": "Draw Text on Image",
+      "description": "Render text on image with custom font, size, color, and shadow effects"
+    },
+    "DrawImage": {
+      "display_name": "Overlay Image & Stamp",
+      "description": "Overlay sub-images, logos, or stamps onto a background image with transparency control"
+    },
+    "DrawWatermark": {
+      "display_name": "Tiled Watermark",
+      "description": "Apply repeated tilted watermark across the entire image to prevent unauthorized copying"
+    },
+    "FillColor": {
+      "display_name": "Fill Color & Mosaic Redact",
+      "description": "Fill designated region with solid color or blur with mosaic to redact sensitive data"
+    },
+    "BarcodeCreate": {
+      "display_name": "Create Barcode & QR Code",
+      "description": "Generate high-resolution 1D barcodes or customized QR code graphics"
+    }
+  }
+}
